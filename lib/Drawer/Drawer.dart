@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
-import 'package:waste_to_taste/Drawer/Settings.dart';
 import 'package:waste_to_taste/Drawer/homepage.dart';
+import 'package:waste_to_taste/Views/DrwarerPages/HomePage.dart';
+import 'package:waste_to_taste/Views/DrwarerPages/ProfilePage.dart';
 
 class Drawer extends StatefulWidget {
   const Drawer({super.key});
@@ -20,21 +21,21 @@ class _DrawerState extends State<Drawer> {
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             colorLineSelected: Colors.white,
-            name: "Homepage",
+            name: "Donate Your Food",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const HomePage(),
+        const Home(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             colorLineSelected: Colors.white,
-            name: "Gallery",
+            name: "Profile",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500,
                  color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Settings(),
+        const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -44,7 +45,7 @@ class _DrawerState extends State<Drawer> {
               fontWeight: FontWeight.w500,
                color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Settings(),
+        const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -53,7 +54,7 @@ class _DrawerState extends State<Drawer> {
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Settings(),
+        const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -62,7 +63,7 @@ class _DrawerState extends State<Drawer> {
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Settings(),
+        const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -71,7 +72,7 @@ class _DrawerState extends State<Drawer> {
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Settings(),
+        const PageOne(),
       ),
     ];
   }

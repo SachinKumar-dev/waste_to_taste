@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -215,6 +216,10 @@ class _SignUpState extends State<SignUp> {
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: TextField(
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(10),
+                ],
                 keyboardType: TextInputType.phone,
                 controller: number,
                 decoration: InputDecoration(

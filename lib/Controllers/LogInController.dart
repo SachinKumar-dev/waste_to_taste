@@ -9,6 +9,7 @@ class LogInController extends ChangeNotifier {
 
   Future<void> signIn(BuildContext context) async {
     final validEmail = RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$');
+
     if (email.text.isEmpty || password.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -17,16 +18,16 @@ class LogInController extends ChangeNotifier {
         ),
       );
       return;
-    }
-    else if(!validEmail.hasMatch(email.text)){
+    } else if (!validEmail.hasMatch(email.text)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please enter correct email address.'),
           backgroundColor: Colors.red,
         ),
       );
-        return;
+      return;
     }
+
     if (!email.text.contains("@gmail.com")) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -36,6 +37,7 @@ class LogInController extends ChangeNotifier {
       );
       return; // Exit the function early if email is invalid
     }
+
     try {
       isSigningIn = true;
       notifyListeners();
@@ -44,16 +46,17 @@ class LogInController extends ChangeNotifier {
         email: email.text,
         password: password.text,
       );
+
       email.clear();
       password.clear();
+
+      // Navigate to the MainScreen only after successful sign-in
       context.go("/MainScreen");
-      // Reset the state to indicate signing is complete
-      isSigningIn = false;
-      notifyListeners();
     } on FirebaseAuthException catch (e) {
       // Reset the state to indicate signing is complete
       isSigningIn = false;
       notifyListeners();
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Invalid credentials. Please try again.'),
@@ -61,8 +64,8 @@ class LogInController extends ChangeNotifier {
         ),
       );
     }
-    context.push('/MainScreen');
   }
+
 
   @override
   void dispose() {
