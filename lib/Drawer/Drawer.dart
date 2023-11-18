@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
-import 'package:waste_to_taste/Drawer/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:waste_to_taste/Views/DrwarerPages/HomePage.dart';
 import 'package:waste_to_taste/Views/DrwarerPages/ProfilePage.dart';
+import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
 
 class Drawer extends StatefulWidget {
   const Drawer({super.key});
@@ -67,15 +70,22 @@ class _DrawerState extends State<Drawer> {
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
+            onTap: () async {
+              await FirebaseAuth.instance.signOut();
+              context.go("/login");
+              var pref=await SharedPreferences.getInstance();
+              pref.setBool(SplashScreenState.KEYLOGIN, false);
+            },
             colorLineSelected: Colors.white,
             name: "LogOut",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const PageOne(),
+        Container(),
       ),
     ];
   }
+
 
   @override
   Widget build(BuildContext context) {

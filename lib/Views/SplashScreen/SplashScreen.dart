@@ -1,25 +1,40 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen> createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
   late AnimationController _imageController;
   late Animation<double> _imageAnimation;
   late Animation<Offset> _textAnimation;
 
+  //check state
+  static var KEYLOGIN='login';
+  void check()async{
+    var pref = await SharedPreferences.getInstance();
+    bool? isLoggedIn = pref.getBool(SplashScreenState.KEYLOGIN);
+    if(isLoggedIn==true){
+      context.go('/drawer');
+    }
+    else{
+      context.go('/splash');
+    }
+  }
+
+
   @override
   void initState() {
     super.initState();
+    check();
     Timer(const Duration(seconds: 3), () {
       context.go("/logoScreen");
     });

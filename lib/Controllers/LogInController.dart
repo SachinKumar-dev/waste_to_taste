@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+
 class LogInController extends ChangeNotifier {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   bool isSigningIn = false;
-
   Future<void> signIn(BuildContext context) async {
     final validEmail = RegExp(r'^[a-zA-Z0-9._%+-]+@gmail\.com$');
 
@@ -50,6 +50,10 @@ class LogInController extends ChangeNotifier {
       email.clear();
       password.clear();
 
+      // Stop the circular indicator after a successful login
+      isSigningIn = false;
+      notifyListeners();
+
       // Navigate to the MainScreen only after successful sign-in
       context.go("/MainScreen");
     } on FirebaseAuthException catch (e) {
@@ -65,6 +69,7 @@ class LogInController extends ChangeNotifier {
       );
     }
   }
+
 
 
   @override

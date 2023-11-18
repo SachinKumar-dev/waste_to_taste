@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:waste_to_taste/Controllers/LogInController.dart';
+import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
+
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -148,8 +151,12 @@ class _LogInState extends State<LogIn> {
                                       onPressed: logInProvider.isSigningIn
                                       // Disable the button when signing in
                                           ? null
-                                          : () {
+                                          : () async{
                                         logInProvider.signIn(context);
+                                        var pref =
+                                            await SharedPreferences.getInstance();
+                                        pref.setBool(
+                                            SplashScreenState.KEYLOGIN, true);
                                       },
                                       child: Text(
                                         "Login",
@@ -157,7 +164,7 @@ class _LogInState extends State<LogIn> {
                                       ),
                                     ),
                                   ),
-                                  if (logInProvider.isSigningIn)
+                                  if (logInProvider.isSigningIn==true)
                                     const Center(
                                       child: CircularProgressIndicator(
                                         color: Colors.white,

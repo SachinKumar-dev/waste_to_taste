@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
 class LogoScreen extends StatefulWidget {
@@ -13,6 +14,24 @@ class LogoScreen extends StatefulWidget {
 
 
 class _LogoScreenState extends State<LogoScreen> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    _checkPageViewedStatus();
+  }
+
+  Future<void> _checkPageViewedStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final selectAccount = prefs.getBool('logoscreen') ?? false;
+    if (selectAccount) {
+      // selectAcc. has been shown before, navigate to a different screen
+      context.go('/login');
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +72,10 @@ class _LogoScreenState extends State<LogoScreen> {
                   sliderButtonIcon: const Icon(Icons.login_rounded,color: Colors.white,size: 14,),
                   text: "Slide for LogIn",
                   textStyle:GoogleFonts.roboto(color:const Color(0xff0E6B56),fontSize: 18,fontWeight: FontWeight.w700),
-                  onSubmit: (){
+                  onSubmit: ()async{
                     context.go('/login');
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setBool('logoscreen', true);
                   },
                 ),
               ),
@@ -76,8 +97,10 @@ class _LogoScreenState extends State<LogoScreen> {
                   sliderButtonIcon: const Icon(Icons.person,color: Colors.white,size: 14,),
                   text: "Slide for SignUp",
                   textStyle:GoogleFonts.roboto(color:const Color(0xff0E6B56),fontSize: 18,fontWeight: FontWeight.w700),
-                  onSubmit: (){
+                  onSubmit: () async{
                     context.go('/signup');
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setBool('logoscreen', true);
                   },
                 ),
               ),

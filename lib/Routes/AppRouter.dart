@@ -13,9 +13,12 @@ import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
 import '../Views/AddItems/AddItems.dart';
 import '../Views/DrwarerPages/ProfilePage.dart';
 
-
 class AppRouter {
-  static final GoRouter router = GoRouter(initialLocation: '/splash', routes: [
+
+  static final GoRouter router = GoRouter(
+
+      initialLocation:'/MainScreen',
+      routes: [
     GoRoute(path: '/login', builder: ((context, state) => const LogIn())),
     GoRoute(
         path: '/logoScreen', builder: ((context, state) => const LogoScreen())),
@@ -27,11 +30,23 @@ class AppRouter {
         path: '/splash', builder: ((context, state) => const SplashScreen())),
     GoRoute(path: '/Profile', builder: ((context, state) => const PageOne())),
     GoRoute(path: '/drawer', builder: ((context, state) => const Drawer())),
-    GoRoute(path: '/location', builder: ((context, state) =>  const MyLocationApp())),
-    GoRoute(path: '/home', builder: ((context, state) =>  const Home())),
-    GoRoute(path: '/Items', builder: ((context, state) =>  const AddItems())),
-    GoRoute(path: '/maps', builder: ((context, state) =>  MapSample(
-        latitude: context.read<LocationPermission>().currentLocation!.latitude,
-        longitude:  context.read<LocationPermission>().currentLocation!.longitude))),
-  ]);
+    GoRoute(
+        path: '/location',
+        builder: ((context, state) => const MyLocationApp())),
+    GoRoute(path: '/home', builder: ((context, state) => const Home())),
+    GoRoute(path: '/Items', builder: ((context, state) => const AddItems())),
+    GoRoute(
+        path: '/choiceScreen',
+        builder: ((context, state) => const LogoScreen())),
+    GoRoute(
+        path: '/maps',
+        builder: ((context, state) => MapSample(
+            latitude:
+                context.read<LocationPermission>().currentLocation!.latitude,
+            longitude: context
+                .read<LocationPermission>()
+                .currentLocation!
+                .longitude))),
+  ]
+  );
 }

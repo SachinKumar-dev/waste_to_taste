@@ -78,8 +78,8 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
                     color: Colors.white,
                   ))),
           Positioned(
-              top: MediaQuery.of(context).size.height * 0.32,
-              left: 240,
+              top: MediaQuery.of(context).size.height * 0.326,
+              left: 256,
               child: GestureDetector(
                   onTap: () {
                     context.go('/drawer');
