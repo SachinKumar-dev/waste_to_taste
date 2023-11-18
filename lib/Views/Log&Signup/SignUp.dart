@@ -128,7 +128,17 @@ class _SignUpState extends State<SignUp> {
               backgroundColor: Colors.white,
               backgroundImage:
                   _imageFile != null ? FileImage(_imageFile!) : null,
-              child: Align(
+              child:
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: const Color(0xff0E6B56),
+                    width: 2,
+                  ),
+                ),
+              child:
+              Align(
                 alignment: const Alignment(0.1, 1.3),
                 child: GestureDetector(
                   onTap: _getImage,
@@ -146,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                       )),
                 ),
               )),
-        ),
+        )),
         Positioned(
           top: MediaQuery.of(context).size.height * 0.35,
           left: 20.w,

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_to_taste/Controllers/LocationPermission.dart';
-import 'package:waste_to_taste/Views/AddItems/AddItems.dart';
+import 'package:waste_to_taste/Views/DonorViews/AddItems/AddItems.dart';
 
 class MyLocationApp extends StatefulWidget {
   const MyLocationApp({super.key});

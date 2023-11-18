@@ -4,14 +4,17 @@ import 'package:waste_to_taste/Controllers/LocationPermission.dart';
 import 'package:waste_to_taste/Drawer/Drawer.dart';
 import 'package:waste_to_taste/Services/LiveLocation.dart';
 import 'package:waste_to_taste/Services/map.dart';
-import 'package:waste_to_taste/Views/DrwarerPages/HomePage.dart';
+import 'package:waste_to_taste/Views/DonorViews/AddItems/AddItems.dart';
+import 'package:waste_to_taste/Views/DonorViews/DrawerPages/HomePage.dart';
+import 'package:waste_to_taste/Views/DonorViews/DrawerPages/ProfilePage.dart';
 import 'package:waste_to_taste/Views/Log&Signup/Login.dart';
 import 'package:waste_to_taste/Views/Log&Signup/SignUp.dart';
 import 'package:waste_to_taste/Views/MainScreenOne/LogoScreen.dart';
 import 'package:waste_to_taste/Views/MainScreenTwo/MainScreenTwo.dart';
+import 'package:waste_to_taste/Views/ReceiverViews/NavBar/BottomNavBar.dart';
+import 'package:waste_to_taste/Views/ReceiverViews/ProfilePage/ReciverProfile.dart';
 import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
-import '../Views/AddItems/AddItems.dart';
-import '../Views/DrwarerPages/ProfilePage.dart';
+
 
 class AppRouter {
 
@@ -29,15 +32,14 @@ class AppRouter {
     GoRoute(
         path: '/splash', builder: ((context, state) => const SplashScreen())),
     GoRoute(path: '/Profile', builder: ((context, state) => const PageOne())),
+    GoRoute(path: '/receiverProfile', builder: ((context, state) => const Profile())),
     GoRoute(path: '/drawer', builder: ((context, state) => const Drawer())),
     GoRoute(
         path: '/location',
         builder: ((context, state) => const MyLocationApp())),
     GoRoute(path: '/home', builder: ((context, state) => const Home())),
     GoRoute(path: '/Items', builder: ((context, state) => const AddItems())),
-    GoRoute(
-        path: '/choiceScreen',
-        builder: ((context, state) => const LogoScreen())),
+    GoRoute(path: '/navBar', builder: ((context, state) => const NavBar())),
     GoRoute(
         path: '/maps',
         builder: ((context, state) => MapSample(
