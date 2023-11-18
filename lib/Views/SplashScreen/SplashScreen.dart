@@ -19,7 +19,7 @@ class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixi
 
   //check state
   static var KEYLOGIN='login';
-  void check()async{
+  void check(context)async{
     var pref = await SharedPreferences.getInstance();
     bool? isLoggedIn = pref.getBool(SplashScreenState.KEYLOGIN);
     if(isLoggedIn==true){
@@ -34,7 +34,7 @@ class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixi
   @override
   void initState() {
     super.initState();
-    check();
+    check(context);
     Timer(const Duration(seconds: 3), () {
       context.go("/logoScreen");
     });
@@ -89,8 +89,8 @@ class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixi
             fit: BoxFit.cover,
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.351,
-            left: MediaQuery.of(context).size.width * 0.15,
+            top: MediaQuery.of(context).size.height * 0.359,
+            left: MediaQuery.of(context).size.width * 0.168,
             child: FadeTransition(
               opacity: _imageAnimation,
               child: Image.asset("assets/logos/splashlogo.png", scale: 3.8),

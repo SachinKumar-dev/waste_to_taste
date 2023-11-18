@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:waste_to_taste/Views/DrwarerPages/HomePage.dart';
-import 'package:waste_to_taste/Views/DrwarerPages/ProfilePage.dart';
+import 'package:waste_to_taste/Views/DonorViews/DrawerPages/HomePage.dart';
+import 'package:waste_to_taste/Views/DonorViews/DrawerPages/ProfilePage.dart';
 import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
 
 class Drawer extends StatefulWidget {
@@ -28,7 +28,7 @@ class _DrawerState extends State<Drawer> {
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const Home(),
+         const Home(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -52,12 +52,15 @@ class _DrawerState extends State<Drawer> {
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
+            onTap: ()  {
+             context.go("/navBar");
+            },
             colorLineSelected: Colors.white,
             name: "Find Receiver",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-        const PageOne(),
+         Container(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(

@@ -20,7 +20,6 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +60,7 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
                       ),
                     ], color: Color(0xff0E6B56), shape: BoxShape.circle),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -82,7 +81,7 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
               left: 256,
               child: GestureDetector(
                   onTap: () {
-                    context.go('/drawer');
+                    context.go('/navBar');
                   },
                   child: Image.asset(
                     "assets/logos/img_1.png",

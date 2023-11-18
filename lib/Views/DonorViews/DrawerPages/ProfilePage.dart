@@ -49,7 +49,7 @@ class _PageOneState extends State<PageOne> {
             return Stack(
               children: [
                 Container(
-                  height: height * 0.35,
+                  height: height * 0.45,
                   width: double.infinity,
                   decoration: const BoxDecoration(
                       color: Color(0xff0E6B56),
@@ -63,7 +63,6 @@ class _PageOneState extends State<PageOne> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: documents.length,
                     itemBuilder: (context, index) {
-                      String imageUrl = documents[index]["imageUrlP"];
                       return Padding(
                         padding: const EdgeInsets.only(top: 28.0),
                         child: Column(
@@ -125,19 +124,19 @@ class _PageOneState extends State<PageOne> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(left: 15.0, top: 5),
+                                  const EdgeInsets.only(left: 15.0, top: 25),
                               child: Text(
                                 documents[index]['name'],
-                                style: GoogleFonts.lilitaOne(
+                                style: GoogleFonts.poppins(
                                     fontSize: 20, color: Colors.white),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       );
                     }),
                 Align(
-                  alignment: const Alignment(0.2, 0.2),
+                  alignment: const Alignment(0.2, 0.4),
                   child: Card(
                     elevation: 1,
                     child: Container(
@@ -161,12 +160,12 @@ class _PageOneState extends State<PageOne> {
                                         child: ListTile(
                                           title: Text(
                                             "Email",
-                                            style: GoogleFonts.lilitaOne(
-                                                fontSize: 22,
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 20,
                                                 color: Colors.white),
                                           ),
                                           subtitle: Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.only(bottom: 12.0,top: 8),
                                             child: Text(
                                               documents[index]["email"],
                                               style: const TextStyle(
@@ -186,17 +185,17 @@ class _PageOneState extends State<PageOne> {
                                         child: ListTile(
                                           title: Text(
                                             "Contact",
-                                            style: GoogleFonts.lilitaOne(
-                                                fontSize: 22,
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 20,
                                                 color: Colors.white),
                                           ),
                                           subtitle: Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.only(top: 5.0),
                                             child: Text(
                                               documents[index]["MobileNumber"],
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 18),
+                                                  fontSize: 17),
                                             ),
                                           ),
                                         ))),
