@@ -19,6 +19,67 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
     context.read<LocationPermission>().checkLocationPermission(context);
     super.initState();
   }
+  //fun to check inApp code
+  Future<void> showPasswordDialog(BuildContext context) async {
+    String enteredPassword = '';
+
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Enter Password'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                onChanged: (value) {
+                  enteredPassword = value;
+                },
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Replace these passwords with your actual passwords
+                List<String> validPasswords = ['password1', 'password2', 'password3'];
+
+                if (validPasswords.contains(enteredPassword)) {
+                  Navigator.of(context).pop();
+                  context.go("/navBar");
+                  print('Password is correct. Perform further navigation.');
+                } else {
+                  // Incorrect password, show an error message
+                  const snackBar = SnackBar(
+                    content: Text(
+                      'Incorrect password. Please try again.',
+                      style: TextStyle(color: Colors.white),
+
+                    ),
+                    backgroundColor: Colors.red,
+                    duration: Duration(seconds: 2),
+                  );
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +141,8 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
               top: MediaQuery.of(context).size.height * 0.326,
               left: 256,
               child: GestureDetector(
-                  onTap: () {
-                    context.go('/navBar');
+                  onTap: () async{
+                    showPasswordDialog(context);
                   },
                   child: Image.asset(
                     "assets/logos/img_1.png",

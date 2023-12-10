@@ -391,7 +391,7 @@ class _SignUpState extends State<SignUp> {
                           await createData(imageUrl);
 
                           // Perform signup
-                          signUpController.signUp(context);
+                           signUpController.signUp(context);
 
                           // Set isSignUp back to false to indicate signup is complete
                           setState(() {

@@ -7,12 +7,20 @@ import 'package:waste_to_taste/Controllers/LocationProvider.dart';
 import 'package:waste_to_taste/Controllers/LogInController.dart';
 import 'package:waste_to_taste/Controllers/ReadDataController.dart';
 import 'package:waste_to_taste/Controllers/SignUpController.dart';
+import 'package:waste_to_taste/Controllers/donateStatus.dart';
+import 'package:waste_to_taste/Controllers/foodDocReadController.dart';
+import 'package:waste_to_taste/Controllers/userDocReadController.dart';
 import 'package:waste_to_taste/Routes/AppRouter.dart';
 import 'Services/Color.dart';
+import 'Services/FCM/messaging.dart';
 
-Future<void> main() async {
+final navigatorKey=GlobalKey<NavigatorState>();
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseApi firebaseApi = FirebaseApi();
+  await firebaseApi.initNotifications();
   runApp(MyApp());
 }
 
@@ -44,8 +52,12 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => ReadDataController()),
               ChangeNotifierProvider(create: (_) => LocationPermission()),
               ChangeNotifierProvider(create: (_) => LocationAddressProvider()),
+              ChangeNotifierProvider(create: (_) => FoodDoc()),
+              ChangeNotifierProvider(create: (_) => UserDoc()),
+              ChangeNotifierProvider(create: (_) => DonationProvider()),
             ],
             child: MaterialApp.router(
+              key: navigatorKey,
               routerConfig: AppRouter.router,
               debugShowCheckedModeBanner: false,
               theme: ThemeData(

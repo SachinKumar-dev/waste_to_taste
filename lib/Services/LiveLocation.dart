@@ -26,7 +26,7 @@ class _MyLocationAppState extends State<MyLocationApp> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const AddItems(
+            builder: (context) => const AddItems(userId: '',
             ),
           ),
         );

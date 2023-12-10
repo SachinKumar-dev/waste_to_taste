@@ -43,7 +43,7 @@ class _DrawerState extends State<Drawer> {
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             colorLineSelected: Colors.white,
-            name: "Top Donors",
+            name: "Awareness",
             baseStyle: const TextStyle(
               fontWeight: FontWeight.w500,
                color: Colors.white, fontSize: 18),
@@ -53,7 +53,7 @@ class _DrawerState extends State<Drawer> {
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             onTap: ()  {
-             context.go("/navBar");
+             context.go("/MainScreen");
             },
             colorLineSelected: Colors.white,
             name: "Find Receiver",
@@ -61,15 +61,6 @@ class _DrawerState extends State<Drawer> {
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
          Container(),
-      ),
-      ScreenHiddenDrawer(
-        ItemHiddenMenu(
-            colorLineSelected: Colors.white,
-            name: "Settings",
-            baseStyle: const TextStyle(
-                fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
-            selectedStyle: const TextStyle()),
-        const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(

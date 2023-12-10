@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:waste_to_taste/Services/FoodGPT/gptChat.dart';
+import 'package:waste_to_taste/Views/ReceiverViews/NavBar/HomePage/Receiver.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/ProfilePage/ReciverProfile.dart';
 
 
 class NavBar extends StatefulWidget {
-  const NavBar({Key? key}) : super(key: key);
+  const NavBar({super.key});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -16,8 +18,8 @@ class _NavBarState extends State<NavBar> {
 
   //pages
   final List<Widget> pages = [
-    HomePage(),
-    FavoritesPage(),
+    FoodListScreen(userId: '',),
+    const ChatGptScreen(),
     const Profile()
   ];
 
@@ -39,9 +41,9 @@ class _NavBarState extends State<NavBar> {
               padding: const EdgeInsets.all(16),
               backgroundColor: const Color(0xff0E6B56),
               color: Colors.white,
-              activeColor: Colors.white,
-              tabActiveBorder: Border.all(color: Colors.white),
-              tabBackgroundColor: Colors.grey,
+              activeColor: const Color(0xff0E6B56),
+              tabActiveBorder: Border.all(color: const Color(0xff0E6B56),),
+              tabBackgroundColor: Colors.white,
               gap: 8,
               onTabChange: _navigateTabs,
               selectedIndex: selectedIndex,
@@ -55,16 +57,16 @@ class _NavBarState extends State<NavBar> {
                 ),
                 GButton(
                   onPressed: () {
-                    _navigateTabs(1);
+                    _navigateTabs(2);
                   },
-                  icon: (Icons.favorite_border_rounded),
-                  text: "Fav",
+                  icon: (Icons.chat),
+                  text: "GPT",
                 ),
                 GButton(
                   onPressed: () {
-                    _navigateTabs(2);
+                    _navigateTabs(1);
                   },
-                  icon: (Icons.account_circle),
+                  icon:Icons.account_circle,
                   text: "Profile",
                 ),
                 GButton(
@@ -81,43 +83,4 @@ class _NavBarState extends State<NavBar> {
   }
 }
 
-// Define your pages as separate widgets
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      body: const Center(child: Text('Home Page Content')),
-    );
-  }
-}
 
-class FavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Favorites Page')),
-      body: const Center(child: Text('Favorites Page Content')),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Profile Page')),
-      body: const Center(child: Text('Profile Page Content')),
-    );
-  }
-}
-
-class ExitPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Exit Page')),
-      body: const Center(child: Text('Exit Page Content')),
-    );
-  }
-}

@@ -179,7 +179,7 @@ class MapSampleState extends State<MapSample> {
             Padding(
               padding: const EdgeInsets.all(22.0),
               child: SizedBox(
-                width: 300,
+                width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                     onPressed: (){

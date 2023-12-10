@@ -6,9 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_to_taste/Controllers/LocationProvider.dart';
+import 'package:waste_to_taste/Controllers/SignUpController.dart';
+
+import '../../../Services/FCM/messaging.dart';
 
 class AddItems extends StatefulWidget {
-  const AddItems({Key? key}) : super(key: key);
+  final String? userId;
+  const AddItems({required this.userId,super.key});
 
   @override
   State<AddItems> createState() => _AddItemsState();
@@ -101,6 +105,7 @@ class _AddItemsState extends State<AddItems> {
     CollectionReference db =
         FirebaseFirestore.instance.collection("Food Details");
     await db.add({
+      "userId": widget.userId,
       "contact": contactController.text,
       "location": pickupController.text,
       "startTime": startTimeController.text,
@@ -110,6 +115,11 @@ class _AddItemsState extends State<AddItems> {
       "rows": rowsData,
       'createdAt': now,
     });
+    // Generate a new document with a unique ID
+    DocumentReference documentReference = db.doc();
+
+    // Access the auto-generated document ID
+    String documentId = documentReference.id;
   }
 
   @override
@@ -163,7 +173,7 @@ class _AddItemsState extends State<AddItems> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 22.0, bottom: 20),
+                                      left: 33.0, bottom: 20),
                                   child: Text(
                                     "Shelf Life(Hrs)",
                                     style: GoogleFonts.inter(
@@ -174,7 +184,7 @@ class _AddItemsState extends State<AddItems> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10.0, bottom: 20),
+                                      left: 15.0, bottom: 20),
                                   child: Text(
                                     "No.of Person",
                                     style: GoogleFonts.inter(
@@ -445,6 +455,8 @@ class _AddItemsState extends State<AddItems> {
                                   context.go('/drawer');
                                 });
                               }
+                              print('Initializing notifications...');
+                              await FirebaseApi().initNotifications();
                             },
                             child: const Text(
                               "Submit",

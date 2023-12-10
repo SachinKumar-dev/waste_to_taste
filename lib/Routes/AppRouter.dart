@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_to_taste/Controllers/LocationPermission.dart';
 import 'package:waste_to_taste/Drawer/Drawer.dart';
+import 'package:waste_to_taste/Drawer/awareness.dart';
 import 'package:waste_to_taste/Services/LiveLocation.dart';
 import 'package:waste_to_taste/Services/map.dart';
 import 'package:waste_to_taste/Views/DonorViews/AddItems/AddItems.dart';
@@ -12,16 +13,15 @@ import 'package:waste_to_taste/Views/Log&Signup/SignUp.dart';
 import 'package:waste_to_taste/Views/MainScreenOne/LogoScreen.dart';
 import 'package:waste_to_taste/Views/MainScreenTwo/MainScreenTwo.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/NavBar/BottomNavBar.dart';
+import 'package:waste_to_taste/Views/ReceiverViews/NavBar/HomePage/FetchFoodDetails.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/ProfilePage/ReciverProfile.dart';
 import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
-
+import '../Services/FoodGPT/gptChat.dart';
+import '../Views/ReceiverViews/NavBar/HomePage/Receiver.dart';
 
 class AppRouter {
-
   static final GoRouter router = GoRouter(
-
-      initialLocation:'/splash',
-      routes: [
+      initialLocation: "/splash", routes: [
     GoRoute(path: '/login', builder: ((context, state) => const LogIn())),
     GoRoute(
         path: '/logoScreen', builder: ((context, state) => const LogoScreen())),
@@ -32,14 +32,29 @@ class AppRouter {
     GoRoute(
         path: '/splash', builder: ((context, state) => const SplashScreen())),
     GoRoute(path: '/Profile', builder: ((context, state) => const PageOne())),
-    GoRoute(path: '/receiverProfile', builder: ((context, state) => const Profile())),
+    GoRoute(
+        path: '/receiverProfile',
+        builder: ((context, state) => const Profile())),
     GoRoute(path: '/drawer', builder: ((context, state) => const Drawer())),
     GoRoute(
         path: '/location',
         builder: ((context, state) => const MyLocationApp())),
     GoRoute(path: '/home', builder: ((context, state) => const Home())),
-    GoRoute(path: '/Items', builder: ((context, state) => const AddItems())),
+    GoRoute(
+        path: '/Items',
+        builder: ((context, state) => const AddItems(
+              userId: '',
+            ))),
     GoRoute(path: '/navBar', builder: ((context, state) => const NavBar())),
+    GoRoute(
+        path: '/homepage',
+        builder: ((context, state) => FoodListScreen(
+              userId: '',
+            ))),
+    GoRoute(
+        path: '/foodDetails',
+        builder: ((context, state) => const FoodDetails())),
+    GoRoute(path: '/gpt', builder: ((context, state) => const ChatGptScreen())),
     GoRoute(
         path: '/maps',
         builder: ((context, state) => MapSample(
@@ -49,6 +64,5 @@ class AppRouter {
                 .read<LocationPermission>()
                 .currentLocation!
                 .longitude))),
-  ]
-  );
+  ]);
 }

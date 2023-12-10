@@ -42,10 +42,11 @@ class LogInController extends ChangeNotifier {
       isSigningIn = true;
       notifyListeners();
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
-      );
+    UserCredential userCredential =
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: email.text,
+    password: password.text,
+    );
 
       email.clear();
       password.clear();
@@ -56,6 +57,7 @@ class LogInController extends ChangeNotifier {
 
       // Navigate to the MainScreen only after successful sign-in
       context.go("/MainScreen");
+      final String userId = userCredential.user!.uid;
     } on FirebaseAuthException catch (e) {
       // Reset the state to indicate signing is complete
       isSigningIn = false;
