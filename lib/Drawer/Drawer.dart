@@ -42,16 +42,6 @@ class _DrawerState extends State<Drawer> {
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
-            colorLineSelected: Colors.white,
-            name: "Awareness",
-            baseStyle: const TextStyle(
-              fontWeight: FontWeight.w500,
-               color: Colors.white, fontSize: 18),
-            selectedStyle: const TextStyle()),
-        const PageOne(),
-      ),
-      ScreenHiddenDrawer(
-        ItemHiddenMenu(
             onTap: ()  {
              context.go("/MainScreen");
             },
