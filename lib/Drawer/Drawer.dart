@@ -28,53 +28,58 @@ class _DrawerState extends State<Drawer> {
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-         const Home(),
+        const Home(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             colorLineSelected: Colors.white,
             name: "Profile",
             baseStyle: const TextStyle(
-                fontWeight: FontWeight.w500,
-                 color: Colors.white, fontSize: 18),
+                fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
         const PageOne(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
-            onTap: ()  {
-             context.go("/MainScreen");
+            onTap: () {
+              context.go("/MainScreen");
             },
             colorLineSelected: Colors.white,
             name: "Find Receiver",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
             selectedStyle: const TextStyle()),
-         Container(),
+        Container(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
             onTap: () async {
               await FirebaseAuth.instance.signOut();
               context.go("/login");
-              var pref=await SharedPreferences.getInstance();
+              var pref = await SharedPreferences.getInstance();
               pref.setBool(SplashScreenState.KEYLOGIN, false);
             },
             colorLineSelected: Colors.white,
             name: "LogOut",
             baseStyle: const TextStyle(
                 fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
-            selectedStyle: const TextStyle()),
+            selectedStyle: const TextStyle(color: Colors.white)),
         Container(),
       ),
     ];
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: HiddenDrawerMenu(
+        styleAutoTittleName: const TextStyle(color: Colors.white),
+        backgroundColorAppBar: const Color(0xff0E6B56),
+        leadingAppBar: const Icon(
+          Icons.menu,
+          color: Colors.white,
+        ),
+        elevationAppBar: 0,
         curveAnimation: Curves.easeInOutCubicEmphasized,
         slidePercent: 50,
         screens: _pages,

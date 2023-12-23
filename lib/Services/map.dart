@@ -116,13 +116,14 @@ class MapSampleState extends State<MapSample> {
     double? longitude = widget.longitude;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color(0xff0E6B56),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back,color: Colors.white,),
             onPressed: () {
              context.go('/Items');
             },
           ),
-          title: const Text("Search Locations"),
+          title: const Text("Search Location",style: TextStyle(color: Colors.white),),
         ),
         body: Column(
           children: [
@@ -182,9 +183,15 @@ class MapSampleState extends State<MapSample> {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff0E6B56),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
                     onPressed: (){
                     submitAddress(context);
-                }, child: const Text("Confirm Location",style: TextStyle(fontSize: 15),)
+                }, child: const Text("Confirm Location",style: TextStyle(fontSize: 15,color: Colors.white),)
                 ),
               ),
             ),],

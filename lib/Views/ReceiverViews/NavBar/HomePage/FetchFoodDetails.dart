@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_to_taste/Controllers/donateStatus.dart';
 import '../../../../Controllers/foodDocReadController.dart';
@@ -24,11 +23,10 @@ class _FoodDetailsState extends State<FoodDetails> {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: WillPopScope(
-        onWillPop: (){
-          context.go("/navBar");
-          return (Future.value(false));
-        },
+      body: PopScope(
+        canPop: true,
+          // context.go("/navBar");
+          // return (Future.value(false));
         child: Consumer2<FoodDoc,DonationProvider>(
           builder: (context, foodDoc,status, child) {
             return Stack(

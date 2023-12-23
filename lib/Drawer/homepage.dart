@@ -8,10 +8,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Center(child: Column(
         children: [
-          Text("HomePage"),
+          const Text("HomePage"),
           ElevatedButton(onPressed: (){
             context.go('/location');
-          }, child: Icon(Icons.forward)
+          }, child: const Icon(Icons.forward)
           )],
       )),
     );

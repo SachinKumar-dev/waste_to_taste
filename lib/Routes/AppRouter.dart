@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_to_taste/Controllers/LocationPermission.dart';
 import 'package:waste_to_taste/Drawer/Drawer.dart';
-import 'package:waste_to_taste/Drawer/awareness.dart';
+import 'package:waste_to_taste/Services/FoodGPT/Gemini.dart';
 import 'package:waste_to_taste/Services/LiveLocation.dart';
 import 'package:waste_to_taste/Services/map.dart';
 import 'package:waste_to_taste/Views/DonorViews/AddItems/AddItems.dart';
@@ -16,7 +16,6 @@ import 'package:waste_to_taste/Views/ReceiverViews/NavBar/BottomNavBar.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/NavBar/HomePage/FetchFoodDetails.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/ProfilePage/ReciverProfile.dart';
 import 'package:waste_to_taste/Views/SplashScreen/SplashScreen.dart';
-import '../Services/FoodGPT/gptChat.dart';
 import '../Views/ReceiverViews/NavBar/HomePage/Receiver.dart';
 
 class AppRouter {
@@ -54,7 +53,7 @@ class AppRouter {
     GoRoute(
         path: '/foodDetails',
         builder: ((context, state) => const FoodDetails())),
-    GoRoute(path: '/gpt', builder: ((context, state) => const ChatGptScreen())),
+    GoRoute(path: '/gpt', builder: ((context, state) => const TextOnly())),
     GoRoute(
         path: '/maps',
         builder: ((context, state) => MapSample(

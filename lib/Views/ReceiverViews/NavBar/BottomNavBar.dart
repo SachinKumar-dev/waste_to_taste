@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:waste_to_taste/Services/FoodGPT/gptChat.dart';
+import 'package:waste_to_taste/Services/FoodGPT/Gemini.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/NavBar/HomePage/Receiver.dart';
 import 'package:waste_to_taste/Views/ReceiverViews/ProfilePage/ReciverProfile.dart';
 
@@ -19,7 +19,7 @@ class _NavBarState extends State<NavBar> {
   //pages
   final List<Widget> pages = [
     FoodListScreen(userId: '',),
-    const ChatGptScreen(),
+    const TextOnly(),
     const Profile()
   ];
 

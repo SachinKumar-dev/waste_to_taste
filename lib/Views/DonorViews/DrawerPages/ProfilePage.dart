@@ -126,10 +126,17 @@ class _PageOneState extends State<PageOne> {
                               padding:
                                   const EdgeInsets.only(left: 15.0, top: 25),
                               child: Text(
-                                documents[index]['name'],
+                                documents[index]['name'], // Your text goes here
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.poppins(
-                                    fontSize: 20, color: Colors.white),
+                                  textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
+
                             ),
                           ],
                         ),
@@ -140,7 +147,7 @@ class _PageOneState extends State<PageOne> {
                   child: Card(
                     elevation: 1,
                     child: Container(
-                      height: height * 0.5,
+                      height: height * 0.48,
                       width: width * 0.95,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50)),
@@ -151,26 +158,30 @@ class _PageOneState extends State<PageOne> {
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
-                                const SizedBox(height: 70),
+                                const SizedBox(height:100),
                                 SizedBox(
-                                    height: 80,
+                                    height: MediaQuery.of(context).size.height*.09,
                                     width: 350,
                                     child: Card(
+                                      shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                                         color: const Color(0xff0E6B56),
                                         child: ListTile(
                                           title: Text(
                                             "Email",
                                             style: GoogleFonts.poppins(
-                                                fontSize: 20,
+                                                fontSize: 18,
                                                 color: Colors.white),
                                           ),
                                           subtitle: Padding(
-                                            padding: const EdgeInsets.only(bottom: 12.0,top: 8),
+                                            padding: const EdgeInsets.only(bottom: 12.0,top: 5),
                                             child: Text(
                                               documents[index]["email"],
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines:2,
                                               style: const TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 18),
+                                                  fontSize: 18,
+                                             ),
                                             ),
                                           ),
                                         ))),
@@ -178,15 +189,16 @@ class _PageOneState extends State<PageOne> {
                                   height: 40,
                                 ),
                                 SizedBox(
-                                    height: 80,
+                                    height: MediaQuery.of(context).size.height*.09,
                                     width: 350,
                                     child: Card(
+                                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                                         color: const Color(0xff0E6B56),
                                         child: ListTile(
                                           title: Text(
                                             "Contact",
                                             style: GoogleFonts.poppins(
-                                                fontSize: 20,
+                                                fontSize: 18,
                                                 color: Colors.white),
                                           ),
                                           subtitle: Padding(

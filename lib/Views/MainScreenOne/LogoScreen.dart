@@ -31,7 +31,6 @@ class _LogoScreenState extends State<LogoScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -89,8 +89,8 @@ class SplashScreenState extends State<SplashScreen> with TickerProviderStateMixi
             fit: BoxFit.cover,
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.359,
-            left: MediaQuery.of(context).size.width * 0.168,
+            top: MediaQuery.of(context).size.height * 0.352,
+            left: MediaQuery.of(context).size.width * 0.145,
             child: FadeTransition(
               opacity: _imageAnimation,
               child: Image.asset("assets/logos/splashlogo.png", scale: 3.8),

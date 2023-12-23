@@ -12,15 +12,13 @@ import 'package:waste_to_taste/Controllers/foodDocReadController.dart';
 import 'package:waste_to_taste/Controllers/userDocReadController.dart';
 import 'package:waste_to_taste/Routes/AppRouter.dart';
 import 'Services/Color.dart';
-import 'Services/FCM/messaging.dart';
+
 
 final navigatorKey=GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseApi firebaseApi = FirebaseApi();
-  await firebaseApi.initNotifications();
   runApp(MyApp());
 }
 
@@ -28,12 +26,11 @@ class MyApp extends StatelessWidget {
   // Create instances of the TextEditingControllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController conformPasswordController =
-  TextEditingController();
+  final TextEditingController conformPasswordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
 
-  MyApp({Key? key}) : super(key: key);
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

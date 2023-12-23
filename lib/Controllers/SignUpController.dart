@@ -1,16 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:waste_to_taste/Controllers/foodDocReadController.dart';
 import 'package:waste_to_taste/Views/DonorViews/AddItems/AddItems.dart';
 
 import '../Views/ReceiverViews/NavBar/HomePage/Receiver.dart';
 
 class SignUpController extends ChangeNotifier {
-
-  String? _userId;
-
-  String? get userId => _userId;
 
   final TextEditingController email;
   final TextEditingController password;
@@ -56,9 +51,9 @@ class SignUpController extends ChangeNotifier {
 
       // Access the user ID after successful signup
       String userId = userCredential.user!.uid;
-        print(userId);
-      AddItems addItems = AddItems(userId: userId);
-      FoodListScreen food = FoodListScreen(userId: userId);
+      AddItems _items=AddItems(userId: userId);
+      print(userId);
+      FoodListScreen _food=FoodListScreen(userId: userId);
 
       // Clear the text fields
       email.clear();

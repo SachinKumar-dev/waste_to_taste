@@ -9,7 +9,7 @@ import 'package:waste_to_taste/Controllers/ReadDataController.dart';
 import '../PagesOfContainer/Pages.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -29,13 +29,17 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: () {
-          context.go('/MainScreen');
-          return (Future.value(false));
+      body:PopScope(
+        onPopInvoked: (bool didPop){
+          if(didPop){
+            context.go('/MainScreen');
+          }
+          else{
+            return;
+          }
         },
+        canPop: true,
         child: Consumer<LocationAddressProvider>(
           builder: (BuildContext context, provider, Widget? child) {
             return Stack(children: [
@@ -130,7 +134,7 @@ class _HomeState extends State<Home> {
                                             style: GoogleFonts.roboto(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -186,7 +190,7 @@ class _HomeState extends State<Home> {
                                             ),
                                           ),
                                           Text(
-                                            "   Cooked \nVegetables",
+                                            "  Veggies",
                                             style: GoogleFonts.roboto(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500),
@@ -260,17 +264,23 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 28.0,top: 30),
+                            padding:  const EdgeInsets.only(left: 10.0,top: 30),
                             child: SizedBox(
                               width: 370,
                               height: 53,
                               child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:const Color(0xff0E6B56),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
                                   onPressed: () async {
                                     context.go('/location');
                                   },
                                   child: const Text(
                                     "Donate",
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16,color: Colors.white),
                                   )),
                             ),
                           ),

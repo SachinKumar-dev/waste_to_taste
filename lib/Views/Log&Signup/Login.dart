@@ -43,7 +43,7 @@ class _LogInState extends State<LogIn> {
                   top: 200.h,
                   left: 20.w,
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.width * 1.3,
+                    height: MediaQuery.of(context).size.width * 1.2,
                     width: MediaQuery.of(context).size.width * 0.9,
                     child: Card(
                       elevation: 2,
@@ -120,6 +120,7 @@ class _LogInState extends State<LogIn> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 15,),
                           Padding(
                             padding: EdgeInsets.only(left: 195.0.w, top: 20.h),
                             child: Text(
@@ -127,6 +128,7 @@ class _LogInState extends State<LogIn> {
                               style: GoogleFonts.roboto(fontSize: 18),
                             ),
                           ),
+                          const SizedBox(height: 15,),
                           Padding(
                             padding: EdgeInsets.only(left: 18.w, top: 30.h),
                             child: SizedBox(
@@ -174,37 +176,37 @@ class _LogInState extends State<LogIn> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 140.0.w, top: 25.h),
-                            child: Text(
-                              "Or login with ...",
-                              style: GoogleFonts.roboto(fontSize: 17),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 160.w, top: 20.h),
-                            child: FloatingActionButton(
-                              onPressed: () {},
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(90),
-                              ),
-                              child: Container(
-                                height: 60,
-                                width: 60,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white,
-                                ),
-                                child: Center(
-                                  child: Image.asset(
-                                    "assets/logos/google.png",
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 140.0.w, top: 25.h),
+                          //   child: Text(
+                          //     "Or login with ...",
+                          //     style: GoogleFonts.roboto(fontSize: 17),
+                          //   ),
+                          // ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(left: 160.w, top: 20.h),
+                          //   child: FloatingActionButton(
+                          //     onPressed: () {},
+                          //     shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(90),
+                          //     ),
+                          //     child: Container(
+                          //       height: 60,
+                          //       width: 60,
+                          //       decoration: const BoxDecoration(
+                          //         shape: BoxShape.circle,
+                          //         color: Colors.white,
+                          //       ),
+                          //       child: Center(
+                          //         child: Image.asset(
+                          //           "assets/logos/google.png",
+                          //           width: 30,
+                          //           height: 30,
+                          //         ),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

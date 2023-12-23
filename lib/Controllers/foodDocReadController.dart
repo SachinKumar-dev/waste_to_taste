@@ -15,9 +15,9 @@ class FoodDoc extends ChangeNotifier {
       foodDocs = querySnapshot.docs.map((doc) {
         return doc.data() as Map<String, dynamic>;
       }).toList();
+      notifyListeners();
     } catch (e) {
       print('Error fetching data: $e');
     }
-    notifyListeners();
   }
 }

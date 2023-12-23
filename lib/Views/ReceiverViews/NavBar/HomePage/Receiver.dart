@@ -7,7 +7,7 @@ import 'package:waste_to_taste/Controllers/foodDocReadController.dart';
 import 'package:waste_to_taste/Controllers/userDocReadController.dart';
 
 class FoodListScreen extends StatefulWidget {
-  String userId;
+    String userId;
    FoodListScreen({super.key,required this.userId});
 
   @override
@@ -34,7 +34,8 @@ class _FoodListScreenState extends State<FoodListScreen> {
     var mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food Details'),
+        title:  Text('Food Details',style: GoogleFonts.poppins(color: Colors.white)),
+          backgroundColor: const Color(0xff0E6B56),
       ),
       body:Consumer2<FoodDoc, UserDoc>(
         builder: (context, foodDoc, userDoc, child) {
@@ -171,8 +172,8 @@ class _FoodListScreenState extends State<FoodListScreen> {
                         ),
                       ),
                       Positioned(
-                        left: 350,
-                        top: 205,
+                        left: 330,
+                        top: 195,
                         child: IconButton(
                           icon: const Icon(
                             Icons.delete,
@@ -186,7 +187,7 @@ class _FoodListScreenState extends State<FoodListScreen> {
                       ),
                       Positioned(
                         left: 25,
-                        top: 235,
+                        top: 225,
                         child: Container(
                           height: mq.height * 0.01,
                           width: mq.width * 0.35,

@@ -13,12 +13,12 @@ class MainScreenTwo extends StatefulWidget {
 }
 
 class _MainScreenTwoState extends State<MainScreenTwo> {
-
   @override
   void initState() {
     context.read<LocationPermission>().checkLocationPermission(context);
     super.initState();
   }
+
   //fun to check inApp code
   Future<void> showPasswordDialog(BuildContext context) async {
     String enteredPassword = '';
@@ -32,13 +32,16 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
+                cursorColor: Colors.black,
                 onChanged: (value) {
                   enteredPassword = value;
                 },
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: 'Password',
-                ),
+                    labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.black),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black))),
               ),
             ],
           ),
@@ -47,12 +50,17 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: const Text('Cancel'),
+              child:
+                  const Text('Cancel', style: TextStyle(color: Colors.black)),
             ),
             TextButton(
               onPressed: () {
                 // Replace these passwords with your actual passwords
-                List<String> validPasswords = ['password1', 'password2', 'password3'];
+                List<String> validPasswords = [
+                  'password1',
+                  'password2',
+                  'password3'
+                ];
 
                 if (validPasswords.contains(enteredPassword)) {
                   Navigator.of(context).pop();
@@ -64,7 +72,6 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
                     content: Text(
                       'Incorrect password. Please try again.',
                       style: TextStyle(color: Colors.white),
-
                     ),
                     backgroundColor: Colors.red,
                     duration: Duration(seconds: 2),
@@ -73,7 +80,10 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
               },
-              child: const Text('OK'),
+              child: const Text(
+                'OK',
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           ],
         );
@@ -84,6 +94,7 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(children: [
           Positioned(
@@ -139,9 +150,9 @@ class _MainScreenTwoState extends State<MainScreenTwo> {
                   ))),
           Positioned(
               top: MediaQuery.of(context).size.height * 0.326,
-              left: 256,
+              left: 245,
               child: GestureDetector(
-                  onTap: () async{
+                  onTap: () async {
                     showPasswordDialog(context);
                   },
                   child: Image.asset(
